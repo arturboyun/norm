@@ -26,8 +26,8 @@ class Transaction:
 
         """
         self._pool = pool
-        self._connection: Connection = None
-        self._tx: AsyncpgTransaction = None
+        self._connection: Connection | None = None
+        self._tx: AsyncpgTransaction | None = None
 
         self._isolation = isolation
         self._readonly = readonly
