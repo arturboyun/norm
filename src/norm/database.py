@@ -33,8 +33,8 @@ class AsyncDatabase:
              to be passed to the asyncpg connection pool.
 
         """
-        if not dsn.startswith('postgresql://'):
-            raise ValueError('NORM only supports postgresql+asyncpg')
+        if not dsn.startswith("postgresql://"):
+            raise ValueError("NORM only supports postgresql+asyncpg")
         self._dsn = dsn
         self._min_connections = min_connections
         self._max_connections = max_connections
@@ -47,7 +47,7 @@ class AsyncDatabase:
     async def connect(self) -> Self:
         """
         Establish a connection pool to the PostgreSQL database using the
-        configuration provided when this AsyncDatabase instance was created.
+         configuration provided when this AsyncDatabase instance was created.
 
         Returns:
             Self: The instance of AsyncDatabase with an established
@@ -55,9 +55,10 @@ class AsyncDatabase:
 
         Raises:
             RuntimeError: If a connection pool is already established.
+
         """
         if self._pool is not None:
-            raise RuntimeError('Connection pool is already established.')
+            raise RuntimeError("Connection pool is already established.")
 
         self._pool = await create_pool(
             dsn=self._dsn,
@@ -72,7 +73,9 @@ class AsyncDatabase:
         """
         Close the connection pool to the PostgreSQL database.
 
-        :return: None
+        Returns:
+            None
+
         """
         if self._pool:
             await self._pool.close()
@@ -82,8 +85,10 @@ class AsyncDatabase:
         """
         Enter the asynchronous context manager.
 
-        :return: The instance of AsyncPostgreSQLDatabase
-         with an established connection pool.
+        Returns:
+            Self: The instance of AsyncDatabase with an established
+             connection pool.
+
         """
         await self.connect()
         return self
@@ -127,7 +132,7 @@ class AsyncDatabase:
 
         """
         if self._pool is None:
-            raise RuntimeError('Connection pool is not established.')
+            raise RuntimeError("Connection pool is not established.")
 
         async with self._pool.acquire() as connection:
             await connection.execute(query, *args)
@@ -156,7 +161,7 @@ class AsyncDatabase:
 
         """
         if self._pool is None:
-            raise RuntimeError('Connection pool is not established.')
+            raise RuntimeError("Connection pool is not established.")
 
         return Transaction(
             pool=self._pool,
