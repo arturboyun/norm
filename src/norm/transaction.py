@@ -51,8 +51,11 @@ class Transaction:
         exc_tb: Any,
     ) -> None:
         """Exit the asynchronous context manager."""
-        if exc_type is not None:
-            await self._tx.rollback()
-        else:
-            await self._tx.commit()
-        await self._pool.release(self._connection)
+        try:
+            if exc_type is not None:
+                await self._tx.rollback()
+            else:
+                await self._tx.commit()
+        finally:
+            if self._connection is not None:
+                await self._pool.release(self._connection)
