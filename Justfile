@@ -1,3 +1,5 @@
+default: check
+
 install:
     uv lock --upgrade
     uv sync --all-extras --frozen
