@@ -201,4 +201,5 @@ class TestAsyncDatabase:
         with pytest.raises(ValueError, match=r'Test exception'):
             await _run_tx()
 
+        mock_tx.rollback.assert_awaited_once()
         await db.disconnect()
