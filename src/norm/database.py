@@ -19,7 +19,7 @@ class AsyncDatabase:
         **kwargs: Any,
     ) -> None:
         """
-        Initialize the AsyncPostgreSQLDatabase instance.
+        Initialize the AsyncDatabase instance.
 
         Args:
             dsn: The Data Source Name (DSN) string that specifies
