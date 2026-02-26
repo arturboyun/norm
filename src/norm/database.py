@@ -34,7 +34,7 @@ class AsyncDatabase:
 
         """
         if not dsn.startswith("postgresql://"):
-            raise ValueError("NORM only supports postgresql+asyncpg")
+            raise ValueError("NORM only supports postgresql://")
         self._dsn = dsn
         self._min_connections = min_connections
         self._max_connections = max_connections

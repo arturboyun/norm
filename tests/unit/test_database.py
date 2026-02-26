@@ -75,7 +75,7 @@ class TestAsyncDatabase:
         """Test that an invalid DSN raises a ValueError."""
         with pytest.raises(
             ValueError,
-            match=r"NORM only supports postgresql\+asyncpg",
+            match=r"NORM only supports postgresql://",
         ):
             AsyncDatabase(dsn="invalid_dsn")
 
