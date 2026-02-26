@@ -46,28 +46,15 @@ class AsyncDatabase:
 
     async def connect(self) -> Self:
         """
-        Establish a connection pool to the PostgreSQL database.
-
-        Args:
-            dsn (str): The Data Source Name (DSN) string that specifies
-             the connection details for the database.
-            echo (bool | None): Enable query logging.
-            min_connections (int): The minimum number of connections in the pool.
-            max_connections (int): The maximum number of connections in the pool.
-            max_inactive_connection_lifetime (int): The maximum lifetime of
-             inactive connections in seconds.
-            **kwargs (Any): Additional keyword arguments
-             to be passed to the asyncpg connection pool.
+        Establish a connection pool to the PostgreSQL database using the
+        configuration provided when this AsyncDatabase instance was created.
 
         Returns:
-            Self: The instance of AsyncPostgreSQLDatabase
-             with an established connection pool.
+            Self: The instance of AsyncDatabase with an established
+            connection pool.
 
         Raises:
             RuntimeError: If a connection pool is already established.
-            ValueError: If the DSN scheme is not supported
-             or if the connection parameters are invalid.
-
         """
         if self._pool is not None:
             raise RuntimeError('Connection pool is already established.')
