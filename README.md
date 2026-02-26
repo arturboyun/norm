@@ -7,8 +7,8 @@ A powerful python async lightweight ORM
 ## TODO
 
 - [ ] Add Core functionality
+  - [x] Connection Pool
   - [ ] Declarative Models
-  - [ ] Typing
   - [ ] QuerySet
   - [ ] Query Builder
   - [ ] Difficult conditions / Q-objects
@@ -20,7 +20,6 @@ A powerful python async lightweight ORM
   - [ ] Transactions support
   - [ ] Migrations support
   - [ ] Optional Pydantic models support
-  - [ ] Connection Pool
   - [ ] Support only PostgreSQL
   - [ ] Caching layer support (Redis, Memcached, etc.)
   - [ ] Events / Signals support
@@ -38,4 +37,3 @@ A powerful python async lightweight ORM
 ---
 
 - ~~[ ] Add support for other databases (MySQL, SQLite, etc.)~~
-- ~~[ ] Add support for other programming languages (JavaScript, Go, etc.)~~
