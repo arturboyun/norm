@@ -139,4 +139,4 @@ enable_error_code = [
   "deprecated",
 ]
 
-plugins = ["pydantic.mypy"]
+plugins = []
